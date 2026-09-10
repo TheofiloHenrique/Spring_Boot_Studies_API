@@ -13,3 +13,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
     show-sql: false
+logging:
+  level:
+    br.com.theo: DEBUG
