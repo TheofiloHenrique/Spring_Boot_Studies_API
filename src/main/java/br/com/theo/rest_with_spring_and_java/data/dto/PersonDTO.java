@@ -42,8 +42,8 @@ public class PersonDTO implements Serializable {
         return address;
     }
 
-    public void setAdress(String adress) {
-        this.address = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getGender() {
