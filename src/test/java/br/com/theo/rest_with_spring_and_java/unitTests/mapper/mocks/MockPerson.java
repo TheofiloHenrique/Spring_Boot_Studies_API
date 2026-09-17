@@ -3,7 +3,7 @@ package br.com.theo.rest_with_spring_and_java.unitTests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.theo.rest_with_spring_and_java.data.dto.PersonDTO;
+import br.com.theo.rest_with_spring_and_java.data.dto.v1.PersonDTO;
 import br.com.theo.rest_with_spring_and_java.model.Person;
 
 public class MockPerson {
