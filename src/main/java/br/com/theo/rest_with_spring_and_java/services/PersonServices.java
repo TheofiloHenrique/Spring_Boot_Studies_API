@@ -1,12 +1,10 @@
 package br.com.theo.rest_with_spring_and_java.services;
 
-import br.com.theo.rest_with_spring_and_java.data.dto.v1.PersonDTO;
-import br.com.theo.rest_with_spring_and_java.data.dto.v2.PersonDTOV2;
+import br.com.theo.rest_with_spring_and_java.data.dto.PersonDTO;
 import br.com.theo.rest_with_spring_and_java.exception.ResourceNotFoundException;
 import static br.com.theo.rest_with_spring_and_java.mapper.ObjectMapper.parseListObjects;
 import static br.com.theo.rest_with_spring_and_java.mapper.ObjectMapper.parseObject;
 
-import br.com.theo.rest_with_spring_and_java.mapper.custom.PersonMapper;
 import br.com.theo.rest_with_spring_and_java.model.Person;
 import br.com.theo.rest_with_spring_and_java.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -26,9 +24,6 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
-    @Autowired
-    PersonMapper converter;
-
     public List<PersonDTO> findAll (){
         logger.info("Finding all people!");
         return parseListObjects(repository.findAll(), PersonDTO.class);
@@ -42,11 +37,12 @@ public class PersonServices {
         return parseObject(entity, PersonDTO.class);
     }
 
-    public PersonDTOV2 createV2(PersonDTOV2 person){
-        logger.info("Creating one person V2");
+    public PersonDTO create(PersonDTO person) {
 
-        var entity = converter.convertDTOtoEntity(person);
-        return converter.convertEntityToDTO(repository.save(entity));
+        logger.info("Creating one Person!");
+        var entity = parseObject(person, Person.class);
+
+        return parseObject(repository.save(entity), PersonDTO.class);
     }
 
     public PersonDTO update(PersonDTO person){
