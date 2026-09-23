@@ -1,15 +1,27 @@
 package br.com.theo.rest_with_spring_and_java.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@JsonPropertyOrder({"id", "address", "first_name", "last_name","gender"})
 public class PersonDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public Long id;
+
+    @JsonProperty("first_name")
     public String firstName;
+
+    @JsonProperty("last_name")
     public String lastName;
+
     public String address;
+
+    @JsonIgnore
     public String gender;
 
     public PersonDTO() {}
